@@ -1,5 +1,6 @@
 package ru.gb.config;
 
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
@@ -14,35 +15,27 @@ import org.springframework.security.web.access.AccessDeniedHandler;
 
 import javax.sql.DataSource;
 
-@Configuration
-@EnableWebSecurity
-public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
-
+//@Configuration
+//@EnableWebSecurity
+public class SpringSecurityConfig /* extends WebSecurityConfigurerAdapter */ {
+/*
     private final AccessDeniedHandler accessDeniedHandler;
-
     final DataSource dataSource;
-
     @Value("${spring.admin.username}")
     private String adminUsername;
-
     @Value("${spring.admin.username}")
     private String adminPassword;
-
     @Value("${spring.queries.users-query}")
     private String usersQuery;
-
     @Value("${spring.queries.roles-query}")
     private String rolesQuery;
-
-    @Autowired
+   // @Autowired
     public SpringSecurityConfig(AccessDeniedHandler accessDeniedHandler, DataSource dataSource) {
         this.accessDeniedHandler = accessDeniedHandler;
         this.dataSource = dataSource;
     }
-
-    @Override
+  //  @Override
     protected void configure(HttpSecurity http) throws Exception {
-
         http.csrf().disable()
                 .authorizeRequests()
                 .antMatchers("/home", "/registration", "/error", "/h2-console/**").permitAll()
@@ -60,10 +53,8 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
                 // Fix for H2 console
                 .and().headers().frameOptions().disable();
     }
-
-    @Autowired
+   // @Autowired
     public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
-
         // Database authentication
         auth.
                 jdbcAuthentication()
@@ -71,19 +62,17 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
                 .authoritiesByUsernameQuery(rolesQuery)
                 .dataSource(dataSource)
                 .passwordEncoder(passwordEncoder());
-
         // In memory authentication
         auth.inMemoryAuthentication()
                 .withUser(adminUsername).password(adminPassword).roles("ADMIN");
     }
-
+/*
     @Bean
     public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
     }
-
-    @Bean
+  //  @Bean
     public AccessDeniedHandler accessDeniedHandler(){
         return new CustomAccessDeniedHandler();
-    }
+    }*/
 }

@@ -1,4 +1,5 @@
-package ru.gb.entity;
+package ru.gb.inventory.entity;
+
 
 import lombok.Data;
 
@@ -10,13 +11,12 @@ import javax.persistence.Id;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
-@Table(name = "PRODUCT_DISCOUNT")
+@Table(name = "PRODUCT_PRICES")
 @Entity
 @Data
-public class ProductDiscount {
+public class ProductPrice {
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq_idGenerator")
-    @SequenceGenerator(name = "seq_idGenerator", sequenceName = "seq_productDiscountId", allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "ID")
     private long id;
 
