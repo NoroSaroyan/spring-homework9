@@ -1,2 +1,2 @@
 ###
-GET http://localhost:8080/
+GET http://localhost:8080/api/v1/warehouses/1://localhost:8080/
